@@ -1,45 +1,46 @@
-# Verificação da versão de avaliação
+# Verificação do aprimoramento
 
-Realizada em 04/10/2026, em Chromium real sobre o servidor local.
+Realizada em 04/10/2026, em Chromium real sobre o servidor local. A verificação anterior está preservada em `verificacao-v1.md` como histórico.
 
-## Build e verificações locais
+## Build e checks
 
-- `npm run build`: aprovado, oito páginas com HTML próprio.
-- `npm run check`: aprovado, títulos distintos, um H1 por página, assets locais existentes, endereço corrigido, contatos e segurança de links.
+- `npm run build`: aprovado, oito páginas estáticas com HTML próprio.
+- `npm run check`: aprovado, rotas, títulos, assets locais, endereço, segurança de links e contatos pendentes.
 - `node --check public/app.js`: aprovado.
-- Nenhum erro de execução encontrado no navegador.
+- Sem erros de execução ou requisições de recursos falhas nos percursos de interface.
 
-## Páginas e responsividade
+## Rotas e tamanhos
 
-As oito rotas foram abertas diretamente em **1440×1000**, **390×844** e **768×1024**. Todas retornaram HTTP 200, carregaram suas imagens e apresentaram conteúdo. A página inicial também foi verificada nas larguras **320px** e **1920px**. Não foi encontrada rolagem horizontal nos tamanhos normais após corrigir a largura da composição de abertura.
+As oito páginas foram abertas diretamente em **390×844**, **768×1024** e **1440×1000**: 24 verificações, todas HTTP 200. Conferidos título próprio, um H1, Sora 600, imagens carregadas, endereço no rodapé e ausência de rolagem horizontal. Todos os percursos também passaram com tamanho base do texto ampliado para **200% em 390px**, sem excesso horizontal. Esse teste de tamanho do texto não substitui testes em aparelhos físicos ou em todos os tipos de zoom do navegador.
 
-Capturas de início, aulas online, Rota Musical, galeria e contato foram feitas em desktop e celular. Foram inspecionadas visualmente a abertura de desktop e celular, a página Rota Musical no desktop e os estados de interação. Os arquivos de captura estão em `docs/qa/` no workspace. A verificação automática das demais páginas cobriu carregamento, imagens e largura; não equivale a uma revisão manual exaustiva de cada viewport.
+Relatório: `qa-v2/verificacao.json`. Capturas dos oito percursos em celular e desktop, imagens de interação e folhas de contato ficam em `docs/qa-v2/` no workspace; os PNG/JPG são excluídos do repositório por tamanho. Os relatórios JSON acompanham o código.
 
-## Interações
+## Inspeção visual
 
-- Menu móvel abre, fecha, fecha com Escape e restaura foco ao botão.
-- Menu “Mais” abre, fecha e responde a Escape.
-- Modal de contato abre, fecha por botão/Escape e restaura foco à ação inicial; Tab e Shift+Tab permanecem nos controles do aviso.
-- Seleção de instrumentos online funciona por clique, setas, Home e End; mensagem de interesse corresponde ao instrumento escolhido.
-- Botões pendentes de WhatsApp, professor e YouTube exibem o aviso; não há destinos falsos.
-- Links internos navegam entre URLs próprias; a rota Cursos foi alcançada pelo botão da abertura.
-- Galeria mostra dez fotos reais e mantém itens sem URL como figuras estáticas.
-- Links externos têm `target="_blank"` e `rel="noopener noreferrer"`.
-- Conteúdo e cursos permanecem legíveis com JavaScript desativado; a navegação completa também está disponível no rodapé.
-- `prefers-reduced-motion` desativa as animações e mantém o conteúdo visível.
+Foram examinadas as capturas das aberturas das oito páginas em celular e desktop, além dos cursos completos no desktop, Rota Musical completa no celular e Contato completo no celular. Conferidos hierarquia, enquadramento, texto, botões, endereço e rodapé. A inspeção revelou compressão do texto na página de Contato: a composição foi corrigida e novamente capturada. Também foram examinados menu móvel, abas, card de Ukulele e modal.
 
-## Fontes, mídia e conteúdo
+Os instrumentos usam proporções 3:2. Ukulele e Violino permanecem inteiros. O destaque de Violão mostra a fotografia uma vez e apresenta Popular e Clássico separadamente. Logo e identidades de Aulas Online/Rota Musical foram preservadas sem alteração das letras.
 
-Fontes locais Instrument Serif e Manrope, com fallback e `font-display: swap`. Imagens otimizadas em WebP. Sem áudio, vídeos ou players automáticos, nem formulário que simula envio. Aulas Online e Rota Musical usam as identidades corretas e páginas separadas. Endereço confirmado no briefing aparece completo, com “Sobreloja 3 – 1° subsolo”.
+## Interações e acessibilidade
 
-## Texto ampliado a 200%
+- Menu móvel abre e fecha, Escape restaura foco e links levam aos percursos corretos.
+- Abertura dos menus não retarda a disponibilidade dos links por teclado; corrigida a transição de visibility que inicialmente fazia Tab saltar o menu.
+- Menu Mais abre/fecha, com acesso aos itens; páginas agrupadas destacam o botão Mais.
+- URLs e títulos acompanham navegação; voltar/avançar funcionam; item atual identificado com aria-current.
+- Modal abre por ações de escola, professor e YouTube, mantém contexto, fecha por botão/Escape e restaura foco. Tab permanece no aviso.
+- Cinco abas online carregam suas imagens e mensagens; clique, setas, Home e End funcionam. Texto mantém opacidade 1 durante a seleção.
+- Galeria apresenta dez registros reais: URLs individuais continuam nulas e as fotos continuam figuras, sem destinos falsos.
+- Conteúdo permanece visível sem JavaScript, com reduced-motion e com IntersectionObserver deliberadamente indisponível.
+- Foco visível, controles de toque e links externos seguros.
 
-A primeira verificação detectou excesso de largura em alguns blocos. Foram corrigidas as quebras de palavras, as larguras mínimas de colunas e as ações flexíveis. A execução adicional para confirmar os oito percursos com 200% foi recusada pelo ambiente (`denied`); essa repetição permanece pendente. Não é declarado que o teste final a 200% passou.
+## Desempenho
 
-## Limites
+A investigação reproduziu download da imagem na primeira seleção de uma aba e painel inicialmente transparente. Foi removido o fade que escondia o conteúdo e acrescentada antecipação das imagens próxima da seção. Fontes locais passaram de 151.328 para 50.120 bytes. Sora e Manrope usam WOFF2 e font-display: swap.
 
-Não houve autenticação no Instagram: a resposta pública permitiu confirmar o perfil, mas não as URLs específicas das publicações. Nenhuma foto foi associada a um post por suposição. Consulte `instagram-verificacao.md`.
+A comparação controlada, condições e limites estão em `desempenho-v2.md`; os tempos locais não são uma promessa de desempenho em produção. Consultas HTTP ao site publicado retornaram 403 neste ambiente, impedindo diagnóstico da latência real da hospedagem.
 
-Não foram testados envios reais para WhatsApp/YouTube, pois esses contatos continuam pendentes. Não foram testados leitores de tela, aparelhos físicos ou todos os motores de navegador. Os sites internacionais foram pesquisados por HTML atual, sem afirmar teste visual deles.
+## Conteúdo e limites
 
-Os resultados resumidos e capturas ficam em `docs/qa/`. A verificação de publicação usa o status retornado pelo serviço de hospedagem; os testes de interface foram feitos localmente.
+Endereço confirmado preservado integralmente, inclusive **Sobreloja 3 – 1° subsolo**. WhatsApp da escola/professores e canal do YouTube permanecem nulos. Aviso pendente mantém o texto solicitado. Não há envio simulado, novos contatos inventados, datas falsas ou links individuais de Instagram por suposição. Não foi feita nova pesquisa no Instagram nesta etapa.
+
+Não foram testados leitores de tela, aparelhos físicos ou outros motores de navegador. Não há envio real de contato, pois faltam os destinos oficiais. A publicação é verificada pelo estado retornado pelo serviço Sites; os testes de interface descritos acima foram locais.

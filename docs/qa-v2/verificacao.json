@@ -1,0 +1,338 @@
+{
+  "routes": [
+    {
+      "route": "/",
+      "width": 390,
+      "status": 200,
+      "overflow": false,
+      "title": "Arte Sobre as Cordas | Escola de música",
+      "headingFont": {
+        "family": "Sora, Arial, sans-serif",
+        "size": "37.05px",
+        "weight": "600"
+      }
+    },
+    {
+      "route": "/a-escola/",
+      "width": 390,
+      "status": 200,
+      "overflow": false,
+      "title": "Nossa Escola | Arte Sobre as Cordas",
+      "headingFont": {
+        "family": "Sora, Arial, sans-serif",
+        "size": "36px",
+        "weight": "600"
+      }
+    },
+    {
+      "route": "/cursos/",
+      "width": 390,
+      "status": 200,
+      "overflow": false,
+      "title": "Cursos de música | Arte Sobre as Cordas",
+      "headingFont": {
+        "family": "Sora, Arial, sans-serif",
+        "size": "36px",
+        "weight": "600"
+      }
+    },
+    {
+      "route": "/aulas-online/",
+      "width": 390,
+      "status": 200,
+      "overflow": false,
+      "title": "Aulas Online | Arte Sobre as Cordas",
+      "headingFont": {
+        "family": "Sora, Arial, sans-serif",
+        "size": "36px",
+        "weight": "600"
+      }
+    },
+    {
+      "route": "/rota-musical/",
+      "width": 390,
+      "status": 200,
+      "overflow": false,
+      "title": "Rota Musical | A música encontra a comunidade",
+      "headingFont": {
+        "family": "Sora, Arial, sans-serif",
+        "size": "36px",
+        "weight": "600"
+      }
+    },
+    {
+      "route": "/eventos/",
+      "width": 390,
+      "status": 200,
+      "overflow": false,
+      "title": "Eventos e Apresentações | Arte Sobre as Cordas",
+      "headingFont": {
+        "family": "Sora, Arial, sans-serif",
+        "size": "36px",
+        "weight": "600"
+      }
+    },
+    {
+      "route": "/galeria/",
+      "width": 390,
+      "status": 200,
+      "overflow": false,
+      "title": "Galeria | Arte Sobre as Cordas",
+      "headingFont": {
+        "family": "Sora, Arial, sans-serif",
+        "size": "36px",
+        "weight": "600"
+      }
+    },
+    {
+      "route": "/contato/",
+      "width": 390,
+      "status": 200,
+      "overflow": false,
+      "title": "Contato e endereço | Arte Sobre as Cordas",
+      "headingFont": {
+        "family": "Sora, Arial, sans-serif",
+        "size": "36px",
+        "weight": "600"
+      }
+    },
+    {
+      "route": "/",
+      "width": 768,
+      "status": 200,
+      "overflow": false,
+      "title": "Arte Sobre as Cordas | Escola de música",
+      "headingFont": {
+        "family": "Sora, Arial, sans-serif",
+        "size": "44px",
+        "weight": "600"
+      }
+    },
+    {
+      "route": "/a-escola/",
+      "width": 768,
+      "status": 200,
+      "overflow": false,
+      "title": "Nossa Escola | Arte Sobre as Cordas",
+      "headingFont": {
+        "family": "Sora, Arial, sans-serif",
+        "size": "40px",
+        "weight": "600"
+      }
+    },
+    {
+      "route": "/cursos/",
+      "width": 768,
+      "status": 200,
+      "overflow": false,
+      "title": "Cursos de música | Arte Sobre as Cordas",
+      "headingFont": {
+        "family": "Sora, Arial, sans-serif",
+        "size": "40px",
+        "weight": "600"
+      }
+    },
+    {
+      "route": "/aulas-online/",
+      "width": 768,
+      "status": 200,
+      "overflow": false,
+      "title": "Aulas Online | Arte Sobre as Cordas",
+      "headingFont": {
+        "family": "Sora, Arial, sans-serif",
+        "size": "43.2px",
+        "weight": "600"
+      }
+    },
+    {
+      "route": "/rota-musical/",
+      "width": 768,
+      "status": 200,
+      "overflow": false,
+      "title": "Rota Musical | A música encontra a comunidade",
+      "headingFont": {
+        "family": "Sora, Arial, sans-serif",
+        "size": "48px",
+        "weight": "600"
+      }
+    },
+    {
+      "route": "/eventos/",
+      "width": 768,
+      "status": 200,
+      "overflow": false,
+      "title": "Eventos e Apresentações | Arte Sobre as Cordas",
+      "headingFont": {
+        "family": "Sora, Arial, sans-serif",
+        "size": "40px",
+        "weight": "600"
+      }
+    },
+    {
+      "route": "/galeria/",
+      "width": 768,
+      "status": 200,
+      "overflow": false,
+      "title": "Galeria | Arte Sobre as Cordas",
+      "headingFont": {
+        "family": "Sora, Arial, sans-serif",
+        "size": "40px",
+        "weight": "600"
+      }
+    },
+    {
+      "route": "/contato/",
+      "width": 768,
+      "status": 200,
+      "overflow": false,
+      "title": "Contato e endereço | Arte Sobre as Cordas",
+      "headingFont": {
+        "family": "Sora, Arial, sans-serif",
+        "size": "40px",
+        "weight": "600"
+      }
+    },
+    {
+      "route": "/",
+      "width": 1440,
+      "status": 200,
+      "overflow": false,
+      "title": "Arte Sobre as Cordas | Escola de música",
+      "headingFont": {
+        "family": "Sora, Arial, sans-serif",
+        "size": "69.12px",
+        "weight": "600"
+      }
+    },
+    {
+      "route": "/a-escola/",
+      "width": 1440,
+      "status": 200,
+      "overflow": false,
+      "title": "Nossa Escola | Arte Sobre as Cordas",
+      "headingFont": {
+        "family": "Sora, Arial, sans-serif",
+        "size": "63.36px",
+        "weight": "600"
+      }
+    },
+    {
+      "route": "/cursos/",
+      "width": 1440,
+      "status": 200,
+      "overflow": false,
+      "title": "Cursos de música | Arte Sobre as Cordas",
+      "headingFont": {
+        "family": "Sora, Arial, sans-serif",
+        "size": "63.36px",
+        "weight": "600"
+      }
+    },
+    {
+      "route": "/aulas-online/",
+      "width": 1440,
+      "status": 200,
+      "overflow": false,
+      "title": "Aulas Online | Arte Sobre as Cordas",
+      "headingFont": {
+        "family": "Sora, Arial, sans-serif",
+        "size": "64px",
+        "weight": "600"
+      }
+    },
+    {
+      "route": "/rota-musical/",
+      "width": 1440,
+      "status": 200,
+      "overflow": false,
+      "title": "Rota Musical | A música encontra a comunidade",
+      "headingFont": {
+        "family": "Sora, Arial, sans-serif",
+        "size": "72px",
+        "weight": "600"
+      }
+    },
+    {
+      "route": "/eventos/",
+      "width": 1440,
+      "status": 200,
+      "overflow": false,
+      "title": "Eventos e Apresentações | Arte Sobre as Cordas",
+      "headingFont": {
+        "family": "Sora, Arial, sans-serif",
+        "size": "63.36px",
+        "weight": "600"
+      }
+    },
+    {
+      "route": "/galeria/",
+      "width": 1440,
+      "status": 200,
+      "overflow": false,
+      "title": "Galeria | Arte Sobre as Cordas",
+      "headingFont": {
+        "family": "Sora, Arial, sans-serif",
+        "size": "63.36px",
+        "weight": "600"
+      }
+    },
+    {
+      "route": "/contato/",
+      "width": 1440,
+      "status": 200,
+      "overflow": false,
+      "title": "Contato e endereço | Arte Sobre as Cordas",
+      "headingFont": {
+        "family": "Sora, Arial, sans-serif",
+        "size": "63.36px",
+        "weight": "600"
+      }
+    }
+  ],
+  "interactions": [
+    "Menu móvel: abrir, links corretos, Escape, retorno de foco",
+    "Modal: contexto, Tab, Escape, botão, restauração de foco",
+    "Todas as abas: imagem, texto imediato, mensagens e setas/Home/End",
+    "YouTube pendente sem URL falsa",
+    "Galeria:10 fotos reais, figuras sem link quando URL ausente",
+    "Violão agrupado com modalidades distintas; Ukulele visível",
+    "Mais, navegação, URL/título, voltar/avançar, item atual",
+    "Conteúdo visível sem JS, com reduced-motion e com observador indisponível"
+  ],
+  "text200": [
+    {
+      "route": "/",
+      "overflow": false
+    },
+    {
+      "route": "/a-escola/",
+      "overflow": false
+    },
+    {
+      "route": "/cursos/",
+      "overflow": false
+    },
+    {
+      "route": "/aulas-online/",
+      "overflow": false
+    },
+    {
+      "route": "/rota-musical/",
+      "overflow": false
+    },
+    {
+      "route": "/eventos/",
+      "overflow": false
+    },
+    {
+      "route": "/galeria/",
+      "overflow": false
+    },
+    {
+      "route": "/contato/",
+      "overflow": false
+    }
+  ],
+  "errors": [],
+  "failedRequests": []
+}

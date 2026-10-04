@@ -71,12 +71,21 @@
   });
   matchMedia('(min-width: 1061px)').addEventListener('change', e => { if(e.matches) setMenu(false); });
   const tabs = [...document.querySelectorAll('[role="tab"]')];
+  const primeTabImage = (tab, priority = 'low') => {
+    const img = document.getElementById(tab.getAttribute('aria-controls'))?.querySelector('img');
+    if (!img) return;
+    img.fetchPriority = priority;
+    img.loading = 'eager';
+  };
   const selectTab = selected => tabs.forEach(t => {
     const active = t === selected;
     t.setAttribute('aria-selected',String(active)); t.tabIndex=active?0:-1;
     document.getElementById(t.getAttribute('aria-controls')).hidden = !active;
+    if (active) primeTabImage(t, 'high');
   });
   tabs.forEach((t,i) => {
+    t.addEventListener('pointerenter',()=>primeTabImage(t));
+    t.addEventListener('focus',()=>primeTabImage(t));
     t.addEventListener('click',()=>selectTab(t));
     t.addEventListener('keydown',e=>{
       let n;
@@ -87,12 +96,21 @@
       if(n!==undefined) {e.preventDefault(); selectTab(tabs[n]); tabs[n].focus();}
     });
   });
+  const onlineSection = document.querySelector('.online-selection');
+  if (onlineSection && 'IntersectionObserver' in window) {
+    const imageObserver = new IntersectionObserver(entries => {
+      if (!entries.some(e => e.isIntersecting)) return;
+      tabs.forEach(tab => primeTabImage(tab));
+      imageObserver.disconnect();
+    }, { rootMargin: '240px' });
+    imageObserver.observe(onlineSection);
+  }
   if ('IntersectionObserver' in window && !matchMedia('(prefers-reduced-motion: reduce)').matches) {
     const observer = new IntersectionObserver(entries => entries.forEach(entry => {
       if(entry.isIntersecting) {entry.target.classList.add('is-visible');observer.unobserve(entry.target);}
-    }), {threshold:0.08});
+    }), {threshold:0.05});
     document.querySelectorAll('.reveal').forEach(el => {
-      if(el.getBoundingClientRect().top > innerHeight) {el.classList.add('will-reveal');observer.observe(el);}
+      if(el.getBoundingClientRect().top > innerHeight) observer.observe(el);
     });
   }
 })();

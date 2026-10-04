@@ -22,6 +22,14 @@ export const courses = [
 ];
 
 export const teachers = []; // Exibir somente perfis com conteúdo oficial.
+export const courseImages = {
+  violao: { width: 1095, height: 730 },
+  violino: { width: 901, height: 669 },
+  ukulele: { width: 1036, height: 691 },
+  piano: { width: 1200, height: 801 },
+  canto: { width: 1200, height: 801 },
+  coral: { width: 1104, height: 749 },
+};
 export const onlineLessons = ['violao-popular', 'violino', 'ukulele', 'piano', 'canto'].map(id => {
   const course = courses.find(c => c.id === id);
   return {
@@ -47,7 +55,7 @@ export const gallery = [
 
 export const events = []; // { id, title, description, date, time, location, image, url, confirmationStatus }
 export const eventConcepts = [
-  { title: 'Minha Música, Nossa Arte', label: 'Expressão no palco', description: 'Uma apresentação citada no material da escola, que valoriza a participação dos alunos e a experiência de compartilhar a música com o público.' },
+  { title: 'Minha Música, Nossa Arte', label: 'Expressão no palco', description: 'Uma apresentação que valoriza a expressão dos alunos e a experiência de compartilhar a música com o público.' },
   { title: 'Rota Musical', label: 'Arte na comunidade', description: 'Encontros musicais em comércios e espaços da comunidade, aproximando alunos, famílias e novos públicos.' },
   { title: 'Encontro de fim de ano', label: 'Uma celebração em conjunto', description: 'O momento em que os alunos da Rota Musical se reúnem para apresentar sua música e receber o público.' },
 ];

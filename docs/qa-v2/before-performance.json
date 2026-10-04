@@ -1,0 +1,209 @@
+{
+  "phase": "before",
+  "method": "Chromium local em 390px. Abas em rede simulada: latência150ms,download1.6Mbps. Tempos locais não representam experiência real de visitantes.",
+  "publishedHttpBefore": [
+    {
+      "route": "/",
+      "error": "HTTP Error 403: Forbidden"
+    },
+    {
+      "route": "/cursos",
+      "error": "HTTP Error 403: Forbidden"
+    },
+    {
+      "route": "/cursos/",
+      "error": "HTTP Error 403: Forbidden"
+    },
+    {
+      "route": "/aulas-online",
+      "error": "HTTP Error 403: Forbidden"
+    },
+    {
+      "route": "/aulas-online/",
+      "error": "HTTP Error 403: Forbidden"
+    }
+  ],
+  "ukulele": {
+    "naturalWidth": 1036,
+    "opacity": "1",
+    "src": "/assets/ukulele.webp"
+  },
+  "tabsImagesBeforeSelection": {
+    "/assets/violao.webp": true,
+    "/assets/violino.webp": false,
+    "/assets/ukulele.webp": false,
+    "/assets/piano.webp": false,
+    "/assets/canto.webp": false
+  },
+  "tabImmediateOpacity": "0",
+  "firstUkuleleImageReadyMs": 625.6,
+  "activePanel": "AULAS ONLINE · UKULELE\n\nDescubra o seu som.\n\nUm instrumento versátil e acolhedor para explorar acordes, ritmos e novos repertórios.\n\nConverse com a escola para conhecer o formato e o professor respons",
+  "localNavigation": [
+    {
+      "route": "/",
+      "visit": "cold",
+      "status": 200,
+      "navigation": {
+        "ttfb": 13,
+        "dcl": 356.79999999981374,
+        "load": 389.29999999981374
+      },
+      "fonts": [
+        {
+          "file": "instrument-serif-latin.ttf",
+          "bytes": 62284,
+          "duration": 57.5
+        },
+        {
+          "file": "manrope-latin.woff2",
+          "bytes": 24836,
+          "duration": 259.20000000018626
+        },
+        {
+          "file": "instrument-serif-italic-latin.ttf",
+          "bytes": 64208,
+          "duration": 187.5
+        }
+      ]
+    },
+    {
+      "route": "/",
+      "visit": "warm",
+      "status": 200,
+      "navigation": {
+        "ttfb": 2.7000000001862645,
+        "dcl": 138.80000000074506,
+        "load": 145.1000000005588
+      },
+      "fonts": [
+        {
+          "file": "instrument-serif-latin.ttf",
+          "bytes": 62284,
+          "duration": 20.90000000037253
+        },
+        {
+          "file": "manrope-latin.woff2",
+          "bytes": 24836,
+          "duration": 54
+        },
+        {
+          "file": "instrument-serif-italic-latin.ttf",
+          "bytes": 64208,
+          "duration": 45.09999999962747
+        }
+      ]
+    },
+    {
+      "route": "/cursos/",
+      "visit": "cold",
+      "status": 200,
+      "navigation": {
+        "ttfb": 3.5,
+        "dcl": 91,
+        "load": 97.59999999962747
+      },
+      "fonts": [
+        {
+          "file": "instrument-serif-latin.ttf",
+          "bytes": 62284,
+          "duration": 37.09999999962747
+        },
+        {
+          "file": "manrope-latin.woff2",
+          "bytes": 24836,
+          "duration": 27.40000000037253
+        },
+        {
+          "file": "instrument-serif-italic-latin.ttf",
+          "bytes": 64208,
+          "duration": 25.799999999813735
+        }
+      ]
+    },
+    {
+      "route": "/cursos/",
+      "visit": "warm",
+      "status": 200,
+      "navigation": {
+        "ttfb": 0.7999999998137355,
+        "dcl": 86.59999999962747,
+        "load": 117.09999999962747
+      },
+      "fonts": [
+        {
+          "file": "instrument-serif-latin.ttf",
+          "bytes": 62284,
+          "duration": 8.900000000372529
+        },
+        {
+          "file": "manrope-latin.woff2",
+          "bytes": 24836,
+          "duration": 28
+        },
+        {
+          "file": "instrument-serif-italic-latin.ttf",
+          "bytes": 64208,
+          "duration": 25.799999999813735
+        }
+      ]
+    },
+    {
+      "route": "/aulas-online/",
+      "visit": "cold",
+      "status": 200,
+      "navigation": {
+        "ttfb": 3.1000000005587935,
+        "dcl": 77.70000000018626,
+        "load": 92.80000000074506
+      },
+      "fonts": [
+        {
+          "file": "instrument-serif-latin.ttf",
+          "bytes": 62284,
+          "duration": 17.899999999441206
+        },
+        {
+          "file": "manrope-latin.woff2",
+          "bytes": 24836,
+          "duration": 24.700000000186265
+        },
+        {
+          "file": "instrument-serif-italic-latin.ttf",
+          "bytes": 64208,
+          "duration": 25.5
+        }
+      ]
+    },
+    {
+      "route": "/aulas-online/",
+      "visit": "warm",
+      "status": 200,
+      "navigation": {
+        "ttfb": 0.7999999998137355,
+        "dcl": 69.90000000037253,
+        "load": 89.20000000018626
+      },
+      "fonts": [
+        {
+          "file": "instrument-serif-latin.ttf",
+          "bytes": 62284,
+          "duration": 10.200000000186265
+        },
+        {
+          "file": "manrope-latin.woff2",
+          "bytes": 24836,
+          "duration": 13.399999999441206
+        },
+        {
+          "file": "instrument-serif-italic-latin.ttf",
+          "bytes": 64208,
+          "duration": 13.400000000372529
+        }
+      ]
+    }
+  ],
+  "localSizes": {
+    "public/app.js": 5652,
+    "public/styles.css": 33400
+  }
+}
