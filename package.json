@@ -1,0 +1,12 @@
+{
+  "name": "arte-sobre-as-cordas",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "node src/build.mjs",
+    "dev": "node src/server.mjs",
+    "check": "node src/check.mjs"
+  },
+  "engines": { "node": ">=20" }
+}

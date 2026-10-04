@@ -1,0 +1,41 @@
+{
+  "routeChecks": "As 8 rotas passaram em 1440×1000,390×844,768×1024 no primeiro percurso completo; erro seguinte era espera da animação no teste do menu, corrigida.",
+  "images": "Todas carregadas nas 24 combinações de rota/viewport.",
+  "extraWidths": [
+    {
+      "width": 320,
+      "overflow": false
+    },
+    {
+      "width": 390,
+      "overflow": false
+    },
+    {
+      "width": 1920,
+      "overflow": false
+    }
+  ],
+  "text200": {
+    "status": "pending_final_recheck",
+    "initialOverflowFound": true,
+    "correctionsApplied": [
+      "quebras de títulos e texto",
+      "largura mínima das colunas",
+      "links e botões limitados à largura",
+      "redes flexíveis no contato"
+    ],
+    "reason": "Execução adicional da verificação recusada pelo ambiente: denied."
+  },
+  "runtimeErrors": [],
+  "interactions": [
+    "Menu móvel abre/fecha e Escape restaura foco",
+    "Modal prende foco, Escape/botão fecham e restauram foco",
+    "Abas por clique e setas do teclado",
+    "Mensagem contextual por instrumento",
+    "YouTube pendente abre aviso sem destino falso",
+    "Galeria com dez fotos e sem URLs inventadas",
+    "Menu Mais e navegação real",
+    "Conteúdo legível sem JavaScript",
+    "Prefers-reduced-motion respeitado"
+  ]
+}
