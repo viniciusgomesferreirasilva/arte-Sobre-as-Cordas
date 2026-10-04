@@ -97,6 +97,37 @@
     });
   });
   const onlineSection = document.querySelector('.online-selection');
+  const scrollAccents = [
+    { anchor: document.querySelector('.discipline-strip'), target: document.querySelector('.discipline-strip .container'), direction: 1 },
+    { anchor: document.querySelector('.stage-art'), target: document.querySelector('.stage-staff'), direction: -1 },
+  ].filter(item => item.anchor && item.target);
+  if (scrollAccents.length) {
+    const reducedMotion = matchMedia('(prefers-reduced-motion: reduce)');
+    let motionFrame = 0;
+    const updateAccents = () => {
+      motionFrame = 0;
+      const compact = innerWidth <= 760;
+      const positions = scrollAccents.map(item => {
+        const rect = item.anchor.getBoundingClientRect();
+        const progress = Math.min(1, Math.max(0, (innerHeight - rect.top) / (innerHeight + rect.height)));
+        const amplitude = item.direction === 1 ? (compact ? 10 : 28) : (compact ? 18 : 32);
+        return { target: item.target, shift: (progress * 2 - 1) * amplitude * item.direction };
+      });
+      positions.forEach(({ target, shift }) => target.style.setProperty('--scroll-shift', `${shift.toFixed(2)}px`));
+    };
+    const queueMotion = () => {
+      if (!reducedMotion.matches && !motionFrame) motionFrame = requestAnimationFrame(updateAccents);
+    };
+    reducedMotion.addEventListener('change', () => {
+      cancelAnimationFrame(motionFrame);
+      motionFrame = 0;
+      scrollAccents.forEach(({ target }) => target.style.removeProperty('--scroll-shift'));
+      queueMotion();
+    });
+    addEventListener('scroll', queueMotion, { passive: true });
+    addEventListener('resize', queueMotion);
+    queueMotion();
+  }
   if (onlineSection && 'IntersectionObserver' in window) {
     const imageObserver = new IntersectionObserver(entries => {
       if (!entries.some(e => e.isIntersecting)) return;

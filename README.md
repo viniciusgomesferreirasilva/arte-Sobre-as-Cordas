@@ -46,3 +46,5 @@ Para um evento confirmado, adicione em `events`: `id`, `title`, `description`, `
 Cada página tem título, descrição, Open Graph e metadados textuais de compartilhamento. Favicon provisório musical. Não há canonical, domínio oficial, coordenadas, telefone ou dados estruturados inferidos. Quando o domínio oficial for confirmado, adicionar canonical, URLs absolutas de compartilhamento e sitemap com esse domínio. Imagem de compartilhamento não foi solicitada nem gerada.
 
 Consulte [pendências](docs/pendencias.md), [materiais](docs/materiais.md), [referências internacionais](docs/referencias-internacionais.md), [verificação](docs/verificacao.md) e [investigação de desempenho](docs/desempenho-v2.md).
+
+O menu de três pontos e o movimento lateral da página inicial estão descritos em [ajustes de menu e movimento](docs/ajustes-menu-movimento.md).

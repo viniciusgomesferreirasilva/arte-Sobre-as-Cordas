@@ -1,0 +1,87 @@
+{
+  "viewports": [
+    {
+      "width": 390,
+      "stripBefore": -4.6,
+      "stripAfter": 4.41,
+      "stripReturn": -4.6,
+      "linesBefore": 9.75,
+      "linesAfter": 4.14,
+      "allLabelsWithinViewport": true,
+      "noHorizontalOverflow": true
+    },
+    {
+      "width": 768,
+      "stripBefore": -11.67,
+      "stripAfter": 13.98,
+      "stripReturn": -11.67,
+      "linesBefore": 17.08,
+      "linesAfter": -7.76,
+      "allLabelsWithinViewport": true,
+      "noHorizontalOverflow": true
+    },
+    {
+      "width": 1191,
+      "stripBefore": -12.79,
+      "stripAfter": 12.63,
+      "stripReturn": -12.79,
+      "linesBefore": 18.68,
+      "linesAfter": -3.52,
+      "allLabelsWithinViewport": true,
+      "noHorizontalOverflow": true
+    },
+    {
+      "width": 1440,
+      "stripBefore": -11.12,
+      "stripAfter": 13.94,
+      "stripReturn": -11.12,
+      "linesBefore": 17.19,
+      "linesAfter": -7.52,
+      "allLabelsWithinViewport": true,
+      "noHorizontalOverflow": true
+    }
+  ],
+  "routes": [
+    {
+      "route": "/",
+      "status": 200
+    },
+    {
+      "route": "/a-escola/",
+      "status": 200
+    },
+    {
+      "route": "/cursos/",
+      "status": 200
+    },
+    {
+      "route": "/aulas-online/",
+      "status": 200
+    },
+    {
+      "route": "/rota-musical/",
+      "status": 200
+    },
+    {
+      "route": "/eventos/",
+      "status": 200
+    },
+    {
+      "route": "/galeria/",
+      "status": 200
+    },
+    {
+      "route": "/contato/",
+      "status": 200
+    }
+  ],
+  "interactions": [
+    "Três pontos: Enter/Tab/Escape, clique, fechamento externo, foco e destino",
+    "Menu móvel por teclado preservado",
+    "Movimento lateral reversível e sem alteração da altura",
+    "Reduced-motion inicial e alteração com página aberta",
+    "Conteúdo visível sem JavaScript",
+    "Texto 200% em 390px sem excesso horizontal"
+  ],
+  "errors": []
+}

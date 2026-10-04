@@ -1,5 +1,7 @@
 # Verificação do aprimoramento
 
+A atualização pontual de menu e movimento lateral foi verificada separadamente: [resultado e condições](ajustes-menu-movimento.md).
+
 Realizada em 04/10/2026, em Chromium real sobre o servidor local. A verificação anterior está preservada em `verificacao-v1.md` como histórico.
 
 ## Build e checks
