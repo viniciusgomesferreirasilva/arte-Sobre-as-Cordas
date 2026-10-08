@@ -1,5 +1,26 @@
 (() => {
   const config = window.schoolConfig;
+  const discoveryPaths = {
+    acompanhar: ['Violão ou ukulele', 'Explore acordes, ritmos e o prazer de acompanhar as músicas que você gosta.', '/cursos/#violao-popular'],
+    melodia: ['Piano, violino ou violão clássico', 'Explore leitura, técnica e interpretação para dar forma às suas melodias.', '/cursos/'],
+    voz: ['Canto ou coral', 'Explore sua expressão vocal ou o encontro de vozes no canto coletivo.', '/cursos/#canto']
+  };
+  document.querySelectorAll('[name="musical-interest"]').forEach(input => input.addEventListener('change', () => {
+    const [title, description, url] = discoveryPaths[input.value];
+    const section=input.closest('.discovery-panel');
+    section.querySelector('#discovery-title').textContent=title;
+    section.querySelector('#discovery-description').textContent=description;
+    section.querySelector('#discovery-link').href=url;
+  }));
+  document.querySelectorAll('[data-gallery-filter]').forEach(button => button.addEventListener('click', () => {
+    document.querySelectorAll('[data-gallery-filter]').forEach(b=>b.setAttribute('aria-pressed',String(b===button)));
+    let count=0;
+    document.querySelectorAll('.gallery-page .gallery-item').forEach(item=> {
+      item.hidden=button.dataset.galleryFilter!=='all' && item.dataset.category!==button.dataset.galleryFilter;
+      if(!item.hidden) {count++;item.classList.add('is-visible');}
+    });
+    document.querySelector('#gallery-filter-status').textContent=`${count} registros exibidos.`;
+  }));
   const dialog = document.querySelector('#contact-dialog');
   let previousFocus;
   const modalContext = dialog.querySelector('.dialog-context');
