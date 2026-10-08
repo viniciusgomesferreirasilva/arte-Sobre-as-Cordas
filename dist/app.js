@@ -45,6 +45,47 @@
     if (lesson.contactConfirmed && lesson.whatsapp) window.open(whatsappUrl(lesson.whatsapp, lesson.initialMessage), '_blank', 'noopener,noreferrer');
     else openNotice(`Seu assunto: suporte pós-aula de ${lesson.instrument.toLowerCase()}.`);
   }));
+  const searchDialog = document.querySelector('#search-dialog');
+  const searchToggle = document.querySelector('.search-toggle');
+  const searchInput = document.querySelector('#search-input');
+  const searchResults = document.querySelector('#search-results');
+  const searchStatus = document.querySelector('#search-status');
+  const normalize = text => text.normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase();
+  const renderSearch = () => {
+    const query = normalize(searchInput.value.trim());
+    const terms = query.split(/\s+/).filter(Boolean);
+    const results = config.searchIndex.filter(item => terms.every(term => normalize(item.title+' '+item.description).includes(term)))
+      .sort((a,b) => Number(normalize(b.title).includes(query))-Number(normalize(a.title).includes(query)));
+    searchResults.replaceChildren();
+    for (const item of results) {
+      const li = document.createElement('li');
+      const link = document.createElement('a'); link.href = item.url;
+      const title = document.createElement('strong'); title.textContent = item.title;
+      const description = document.createElement('span'); description.textContent = item.description;
+      link.append(title, description); li.append(link); searchResults.append(li);
+    }
+    searchStatus.textContent = !query ? 'Explore os cursos e páginas da escola.' : results.length ? `${results.length} resultado${results.length===1?'':'s'} encontrado${results.length===1?'':'s'}.` : 'Nenhum resultado encontrado. Tente outro instrumento ou assunto.';
+  };
+  searchToggle.addEventListener('click', () => {
+    setMenu(false); setMore(false); renderSearch(); searchDialog.showModal();
+    document.body.classList.add('dialog-open'); searchInput.focus();
+  });
+  document.querySelector('.search-close').addEventListener('click', () => searchDialog.close());
+  searchDialog.addEventListener('close', () => {document.body.classList.remove('dialog-open');searchToggle.focus();});
+  searchDialog.addEventListener('click', e => {
+    if(e.target!==searchDialog) return;
+    const r=searchDialog.getBoundingClientRect();
+    if(e.clientX<r.left || e.clientX>r.right || e.clientY<r.top || e.clientY>r.bottom) searchDialog.close();
+  });
+  searchInput.addEventListener('input', renderSearch);
+  document.querySelector('#site-search').addEventListener('submit', e => {e.preventDefault(); renderSearch(); searchResults.querySelector('a')?.focus();});
+  searchDialog.addEventListener('keydown', e => {
+    if(e.key==='Escape') {e.preventDefault();searchDialog.close();return;}
+    if(e.key!=='Tab') return;
+    const controls=[...searchDialog.querySelectorAll('button,input,a[href]')];
+    if(e.shiftKey && document.activeElement===controls[0]) {e.preventDefault();controls.at(-1).focus();}
+    if(!e.shiftKey && document.activeElement===controls.at(-1)) {e.preventDefault();controls[0].focus();}
+  });
   const menuToggle = document.querySelector('.menu-toggle');
   const mobileNav = document.querySelector('#mobile-nav');
   const setMenu = open => {
