@@ -40,10 +40,10 @@
       window.open(url, '_blank', 'noopener,noreferrer');
     } else openNotice(b.dataset.course ? `Seu interesse: ${b.dataset.course}.` : null);
   }));
-  document.querySelectorAll('[data-online]').forEach(b => b.addEventListener('click', () => {
-    const lesson = config.onlineLessons.find(l => l.id === b.dataset.online);
-    if (lesson.availabilityConfirmed && lesson.whatsapp) window.open(whatsappUrl(lesson.whatsapp, lesson.initialMessage), '_blank', 'noopener,noreferrer');
-    else openNotice(`Seu interesse: aulas online de ${lesson.instrument.toLowerCase()}.`);
+  document.querySelectorAll('[data-support]').forEach(b => b.addEventListener('click', () => {
+    const lesson = config.studentSupport.find(l => l.id === b.dataset.support);
+    if (lesson.contactConfirmed && lesson.whatsapp) window.open(whatsappUrl(lesson.whatsapp, lesson.initialMessage), '_blank', 'noopener,noreferrer');
+    else openNotice(`Seu assunto: suporte pós-aula de ${lesson.instrument.toLowerCase()}.`);
   }));
   const menuToggle = document.querySelector('.menu-toggle');
   const mobileNav = document.querySelector('#mobile-nav');
@@ -96,7 +96,7 @@
       if(n!==undefined) {e.preventDefault(); selectTab(tabs[n]); tabs[n].focus();}
     });
   });
-  const onlineSection = document.querySelector('.online-selection');
+  const supportSection = document.querySelector('.support-selection');
   const scrollAccents = [
     { anchor: document.querySelector('.discipline-strip'), target: document.querySelector('.discipline-strip .container'), direction: 1 },
     { anchor: document.querySelector('.stage-art'), target: document.querySelector('.stage-staff'), direction: -1 },
@@ -128,13 +128,13 @@
     addEventListener('resize', queueMotion);
     queueMotion();
   }
-  if (onlineSection && 'IntersectionObserver' in window) {
+  if (supportSection && 'IntersectionObserver' in window) {
     const imageObserver = new IntersectionObserver(entries => {
       if (!entries.some(e => e.isIntersecting)) return;
       tabs.forEach(tab => primeTabImage(tab));
       imageObserver.disconnect();
     }, { rootMargin: '240px' });
-    imageObserver.observe(onlineSection);
+    imageObserver.observe(supportSection);
   }
   if ('IntersectionObserver' in window && !matchMedia('(prefers-reduced-motion: reduce)').matches) {
     const observer = new IntersectionObserver(entries => entries.forEach(entry => {

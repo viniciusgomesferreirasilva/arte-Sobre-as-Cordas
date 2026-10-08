@@ -5,7 +5,7 @@
 - WhatsApp oficial da escola. Referência do PDF: **11 9 8297-3432**, mantida apenas em `school.legacy`, sem link público ou ativação.
 - Canal oficial do YouTube.
 - Nomes, apresentações e contatos próprios dos professores.
-- Modalidades, disponibilidade e formato de cada aula online.
+- Canais, professores responsáveis, disponibilidade e formato do suporte pós-aula.
 - O perfil `https://www.instagram.com/artesobreascordas/` foi fornecido expressamente pelo usuário e está ativo como perfil geral.
 
 ## Galeria
@@ -41,3 +41,7 @@ O botão do mapa abre uma pesquisa por esse texto. Nenhuma coordenada foi inferi
 ## Pauta comercial separada — Blend Digital
 
 Definir modelos de sites, valores, formas de pagamento, entrega e prazos dos projetos. Essa pauta não faz parte do conteúdo público da escola; nenhuma tabela ou condição comercial foi inventada.
+
+## Banner da abertura
+
+O usuário forneceu uma fotografia de grupo no palco na conversa em 08/10/2026. O arquivo não ficou acessível no ambiente; aguarda anexo como arquivo ou link de download para aplicar a fotografia exata com uma camada branca translúcida. Nenhum outro registro foi usado em seu lugar.

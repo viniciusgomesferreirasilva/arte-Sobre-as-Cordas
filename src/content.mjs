@@ -30,15 +30,16 @@ export const courseImages = {
   canto: { width: 1200, height: 801 },
   coral: { width: 1104, height: 749 },
 };
-export const onlineLessons = ['violao-popular', 'violino', 'ukulele', 'piano', 'canto'].map(id => {
-  const course = courses.find(c => c.id === id);
-  return {
-    instrument: id === 'violao-popular' ? 'Violão' : course.name,
-    id, description: course.description,
-    teacher: null, whatsapp: null, availabilityConfirmed: false,
-    initialMessage: `Olá! Tenho interesse nas aulas online de ${id === 'violao-popular' ? 'violão' : course.name.toLowerCase()} da Arte Sobre as Cordas. Gostaria de saber como funcionam.`,
-  };
-});
+export const studentSupport = [
+  { id: 'violao-popular', instrument: 'Violão', description: 'Dúvidas sobre acordes, ritmos e trechos do repertório trabalhado em aula. Retome as orientações do professor e organize sua prática.' },
+  { id: 'violino', instrument: 'Violino', description: 'Converse sobre postura, afinação e exercícios apresentados em aula para seguir praticando com atenção.' },
+  { id: 'ukulele', instrument: 'Ukulele', description: 'Retome acordes, ritmos e passagens das músicas trabalhadas em aula e peça orientação sobre suas dúvidas.' },
+  { id: 'piano', instrument: 'Piano', description: 'Peça orientação sobre leitura, exercícios e trechos do repertório apresentados em aula.' },
+  { id: 'canto', instrument: 'Canto', description: 'Converse sobre os exercícios e as orientações trabalhados em aula para acompanhar sua prática vocal.' },
+].map(item => ({
+  ...item, teacher: null, whatsapp: null, contactConfirmed: false,
+  initialMessage: `Olá! Sou aluno(a) de ${item.instrument.toLowerCase()} da Arte Sobre as Cordas e gostaria de orientação sobre uma dúvida após a aula.`,
+}));
 
 export const gallery = [
   { id: 'cordas-no-palco', image: '/assets/cordas-palco.webp', alt: 'Apresentação de violino e violão em um palco.', caption: 'A emoção de compartilhar', category: 'Apresentações', postUrl: null, postType: null },
@@ -64,9 +65,9 @@ export const pages = [
   { path: '/', label: 'Início', title: 'Arte Sobre as Cordas | Escola de música', description: 'Descubra seu talento com violão, violino, ukulele, piano, canto e coral. Conheça a escola Arte Sobre as Cordas e o projeto Rota Musical.' },
   { path: '/a-escola', label: 'Nossa Escola', title: 'Nossa Escola | Arte Sobre as Cordas', description: 'Um espaço de arte, aprendizado e convivência. Conheça a proposta, a missão e os valores da Arte Sobre as Cordas.' },
   { path: '/cursos', label: 'Cursos', title: 'Cursos de música | Arte Sobre as Cordas', description: 'Conheça os cursos de violão popular e clássico, violino, ukulele, piano, canto e coral da Arte Sobre as Cordas.' },
-  { path: '/aulas-online', label: 'Aulas Online', title: 'Aulas Online | Arte Sobre as Cordas', description: 'Explore instrumentos e conheça a proposta de aulas online. Consulte modalidades e disponibilidade com a Arte Sobre as Cordas.' },
+  { path: '/suporte-ao-aluno', label: 'Suporte ao Aluno', title: 'Suporte ao Aluno | Arte Sobre as Cordas', description: 'Apoio depois da aula para tirar dúvidas, retomar orientações e acompanhar sua prática musical com a Arte Sobre as Cordas.' },
   { path: '/rota-musical', label: 'Rota Musical', title: 'Rota Musical | A música encontra a comunidade', description: 'Conheça a Rota Musical: apresentações em espaços da comunidade e um encontro de fim de ano para compartilhar a música dos alunos.' },
   { path: '/eventos', label: 'Eventos', title: 'Eventos e Apresentações | Arte Sobre as Cordas', description: 'Música, expressão e convivência. Conheça os projetos e apresentações dos alunos da Arte Sobre as Cordas.' },
   { path: '/galeria', label: 'Galeria', title: 'Galeria | Arte Sobre as Cordas', description: 'Um espaço para registros de aulas, apresentações e Rota Musical. Acompanhe a comunidade da Arte Sobre as Cordas.' },
-  { path: '/contato', label: 'Contato', title: 'Contato e endereço | Arte Sobre as Cordas', description: 'Conheça a Arte Sobre as Cordas no Office Center Vila Parque. Saiba como consultar cursos, aulas online e aula experimental.' },
+  { path: '/contato', label: 'Contato', title: 'Contato e endereço | Arte Sobre as Cordas', description: 'Conheça a Arte Sobre as Cordas no Office Center Vila Parque. Saiba como consultar cursos, suporte pós-aula e aula experimental.' },
 ];
