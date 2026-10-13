@@ -44,4 +44,3 @@ dialog{padding:0;border:1px solid var(--line);border-radius:10px;background:var(
 
 .floating-contact .whatsapp-icon{display:block;width:24px;height:24px;min-width:24px;flex:0 0 24px;overflow:visible}.floating-contact span{line-height:1.4}
 
-.map-consent{padding:26px;border:1px solid var(--line);border-radius:10px;background:var(--sand)}.map-consent>span{display:block;font-size:2rem;color:var(--accent)}.map-consent p{margin:14px 0 20px}.map-consent .button{max-width:100%}

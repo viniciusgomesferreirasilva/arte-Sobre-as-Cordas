@@ -16,9 +16,13 @@ for(const p of pages){
  assert(html.includes('name="referrer" content="no-referrer"'));
  assert(!/<script(?![^>]*src=)[^>]*>/.test(html),'Sem script inline');
  assert(!/\son[a-z]+\s*=/.test(html),'Sem handlers inline');
- assert(!html.includes('<iframe'),'Mapa somente após interação');
+ for(const frame of html.matchAll(/<iframe[^>]*>/g)){
+  assert(frame[0].includes('https://maps.google.com/maps?'));
+  assert(frame[0].includes('referrerpolicy="no-referrer"'));
+  assert(frame[0].includes('sandbox="allow-scripts allow-same-origin allow-popups"'));
+ }
 }
 assert(contentSecurityPolicy.includes("object-src 'none'"));
 assert(contentSecurityPolicy.includes("form-action 'none'"));
 assert((await readFile('dist/_headers','utf8')).includes("frame-ancestors 'none'"));
-console.log('Segurança: URLs perigosas bloqueadas, 8 páginas com CSP/referrer, sem scripts inline e mapa sob demanda.');
+console.log('Segurança: URLs perigosas bloqueadas, 8 páginas com CSP/referrer, sem scripts inline e mapa incorporado com restrições.');

@@ -13,14 +13,6 @@
       window.open(url.href,'_blank','noopener,noreferrer'); return true;
     } catch {return false;}
   };
-  document.querySelectorAll('.load-map').forEach(button=>button.addEventListener('click',()=>{
-    const wrapper=button.closest('.local-map');
-    const url=new URL(wrapper.dataset.mapUrl);
-    if(url.protocol!=='https:' || url.hostname!=='maps.google.com') return;
-    const frame=document.createElement('iframe');frame.title='Pesquisa no mapa: Office Center Vila Parque';frame.src=url.href;frame.width='600';frame.height='320';frame.referrerPolicy='no-referrer';
-    frame.setAttribute('sandbox','allow-scripts allow-same-origin allow-popups');
-    wrapper.querySelector('.map-consent').replaceWith(frame);
-  }));
   const discoveryPaths = {
     acompanhar: ['Violão ou ukulele', 'Explore acordes, ritmos e o prazer de acompanhar as músicas que você gosta.', '/cursos/#violao-popular'],
     melodia: ['Piano, violino ou violão clássico', 'Explore leitura, técnica e interpretação para dar forma às suas melodias.', '/cursos/'],
