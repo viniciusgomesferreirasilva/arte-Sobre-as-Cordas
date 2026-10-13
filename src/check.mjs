@@ -1,6 +1,7 @@
+import { safeCheckoutUrl } from './security.mjs';
 import assert from 'node:assert/strict';
 import { readFile, access } from 'node:fs/promises';
-import { pages, school, gallery, studentSupport } from './content.mjs';
+import { pages, school, gallery, studentSupport, coursePayments, paymentConfig } from './content.mjs';
 const htmls = await Promise.all(pages.map(p => readFile(p.path === '/' ? 'dist/index.html' : `dist${p.path}/index.html`, 'utf8')));
 for (let i = 0; i < pages.length; i++) {
   const html = htmls[i];
@@ -21,4 +22,12 @@ assert(school.contacts.youtube === null || /^https:\/\/(www\.)?(youtube\.com|you
 assert(studentSupport.every(l => typeof l.contactConfirmed === 'boolean' && (l.whatsapp === null || /^\d{10,15}$/.test(l.whatsapp.replace(/\D/g, '')))));
 assert(gallery.every(g => g.postUrl === null || /^https:\/\/www\.instagram\.com\/(p|reel)\//.test(g.postUrl)));
 assert.equal(new Set(pages.map(p => p.title)).size, pages.length);
-console.log('Checks aprovados: 8 rotas, títulos, arquivos locais, endereço, segurança de links e contatos pendentes.');
+console.log(`Checks aprovados: ${pages.length} rotas, títulos, arquivos locais, endereço, segurança de links e contatos pendentes.`);
+
+for(const payment of coursePayments) for(const offer of payment.offers) {
+ assert(Number.isSafeInteger(offer.amountCents) && offer.amountCents>0);
+ assert.equal(offer.currency,'BRL');
+ assert(offer.title && offer.terms);
+ if(offer.status==='confirmed') safeCheckoutUrl(offer.checkoutUrl,paymentConfig.verifiedCheckoutHosts);
+}
+console.log('Pagamentos: nenhuma cobrança fictícia; ofertas configuradas passam por validação de valor e destino.');

@@ -13,3 +13,9 @@ export function safeUrl(value, { external = false } = {}) {
   if (url.protocol !== 'https:' || url.username || url.password) throw new Error('Link externo deve usar HTTPS, sem credenciais');
   return url.href;
 }
+
+export function safeCheckoutUrl(value, verifiedHosts) {
+  const url = new URL(safeUrl(value, { external: true }));
+  if (!verifiedHosts.includes(url.hostname) || url.port || url.hash) throw new Error('Destino de pagamento não confirmado');
+  return url.href;
+}

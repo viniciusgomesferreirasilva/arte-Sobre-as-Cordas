@@ -73,5 +73,11 @@ export const pages = [
   { path: '/rota-musical', label: 'Rota Musical', title: 'Rota Musical | A música encontra a comunidade', description: 'Conheça a Rota Musical: apresentações em espaços da comunidade e um encontro de fim de ano para compartilhar a música dos alunos.' },
   { path: '/eventos', label: 'Eventos', title: 'Eventos e Apresentações | Arte Sobre as Cordas', description: 'Música, expressão e convivência. Conheça os projetos e apresentações dos alunos da Arte Sobre as Cordas.' },
   { path: '/galeria', label: 'Galeria', title: 'Galeria | Arte Sobre as Cordas', description: 'Um espaço para registros de aulas, apresentações e Rota Musical. Acompanhe a comunidade da Arte Sobre as Cordas.' },
+  { path: '/pagamentos', label: 'Pagamentos', title: 'Pagamentos dos cursos | Arte Sobre as Cordas', description: 'Consulte pagamentos dos cursos da Arte Sobre as Cordas e a disponibilidade dos links oficiais da InfinitePay.' },
   { path: '/contato', label: 'Contato', title: 'Contato e endereço | Arte Sobre as Cordas', description: 'Conheça a Arte Sobre as Cordas no Office Center Vila Parque. Saiba como consultar cursos, suporte pós-aula e aula experimental.' },
 ];
+
+// Preencher somente com links oficiais gerados na conta InfinitePay da escola.
+export const paymentConfig = { provider: 'InfinitePay', verifiedCheckoutHosts: [], merchantName: null };
+export const coursePayments = courses.map(course => ({ courseId: course.id, offers: [] }));
+// Oferta: { id, title, amountCents, currency:'BRL', terms, checkoutUrl, status:'confirmed' }.

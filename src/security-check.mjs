@@ -1,6 +1,6 @@
 import assert from 'node:assert/strict';
 import { readFile } from 'node:fs/promises';
-import { safeUrl, contentSecurityPolicy } from './security.mjs';
+import { safeUrl, safeCheckoutUrl, contentSecurityPolicy } from './security.mjs';
 import { external, button } from './components.mjs';
 import { pages } from './content.mjs';
 for(const bad of ['javascript:alert(1)','data:text/html,test','http://example.com','https://user:pass@example.com','//example.com','/\\example.com','/\nexample.com']) {
@@ -25,4 +25,7 @@ for(const p of pages){
 assert(contentSecurityPolicy.includes("object-src 'none'"));
 assert(contentSecurityPolicy.includes("form-action 'none'"));
 assert((await readFile('dist/_headers','utf8')).includes("frame-ancestors 'none'"));
-console.log('Segurança: URLs perigosas bloqueadas, 8 páginas com CSP/referrer, sem scripts inline e mapa incorporado com restrições.');
+assert.throws(()=>safeCheckoutUrl('https://checkout.example.invalid/pay',[]));
+assert.throws(()=>safeCheckoutUrl('javascript:alert(1)',['checkout.example.invalid']));
+assert.equal(safeCheckoutUrl('https://checkout.example.invalid/pay',['checkout.example.invalid']),'https://checkout.example.invalid/pay');
+console.log(`Segurança: URLs perigosas bloqueadas, ${pages.length} páginas com CSP/referrer, checkout restrito e mapa incorporado com restrições.`);
