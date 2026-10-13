@@ -9,6 +9,9 @@ export const school = {
   },
   legacy: { whatsapp: '11 9 8297-3432', status: 'pending_confirmation', source: 'PDF antigo' },
   domain: null,
+  trialFreeConfirmed: false,
+  accessDirections: null,
+  enrollmentPlans: [],
 };
 
 export const courses = [
@@ -19,8 +22,9 @@ export const courses = [
   { id: 'piano', name: 'Piano', family: 'Teclas', symbol: '♭', image: 'piano', description: 'Técnica, leitura e expressão artística, respeitando seu nível e sua evolução.' },
   { id: 'canto', name: 'Canto', family: 'Voz', symbol: '♬', image: 'canto', description: 'Afinação, respiração, projeção vocal e interpretação para descobrir as possibilidades da sua voz.' },
   { id: 'coral', name: 'Coral', family: 'Voz em conjunto', symbol: '♫', image: 'coral', description: 'Harmonia, escuta e expressão por meio do canto coletivo. Uma experiência musical compartilhada.' },
-];
+].map(course => ({ ...course, format: null, sessionDuration: null, audience: null }));
 
+export const testimonials = []; // Nome, foto autorizada, instrumento e relato verificados.
 export const teachers = []; // Exibir somente perfis com conteúdo oficial.
 export const courseImages = {
   violao: { width: 1095, height: 730 },
@@ -38,7 +42,7 @@ export const studentSupport = [
   { id: 'canto', instrument: 'Canto', description: 'Converse sobre os exercícios e as orientações trabalhados em aula para acompanhar sua prática vocal.' },
 ].map(item => ({
   ...item, teacher: null, whatsapp: null, contactConfirmed: false,
-  initialMessage: `Olá! Sou aluno(a) de ${item.instrument.toLowerCase()} da Arte Sobre as Cordas e gostaria de orientação sobre uma dúvida após a aula.`,
+  initialMessage: `Olá! Gostaria de saber sobre aulas presenciais, online ou suporte pós-aula de ${item.instrument.toLowerCase()} na Arte Sobre as Cordas.`,
 }));
 
 export const gallery = [
@@ -65,7 +69,7 @@ export const pages = [
   { path: '/', label: 'Início', title: 'Arte Sobre as Cordas | Escola de música', description: 'Descubra seu talento com violão, violino, ukulele, piano, canto e coral. Conheça a escola Arte Sobre as Cordas e o projeto Rota Musical.' },
   { path: '/a-escola', label: 'Nossa Escola', title: 'Nossa Escola | Arte Sobre as Cordas', description: 'Um espaço de arte, aprendizado e convivência. Conheça a proposta, a missão e os valores da Arte Sobre as Cordas.' },
   { path: '/cursos', label: 'Cursos', title: 'Cursos de música | Arte Sobre as Cordas', description: 'Conheça os cursos de violão popular e clássico, violino, ukulele, piano, canto e coral da Arte Sobre as Cordas.' },
-  { path: '/suporte-ao-aluno', label: 'Suporte ao Aluno', title: 'Suporte ao Aluno | Arte Sobre as Cordas', description: 'Apoio depois da aula para tirar dúvidas, retomar orientações e acompanhar sua prática musical com a Arte Sobre as Cordas.' },
+  { path: '/suporte-ao-aluno', label: 'Suporte ao Aluno', title: 'Suporte ao Aluno | Arte Sobre as Cordas', description: 'Aulas presenciais e online em um só lugar. Consulte instrumentos, formatos disponíveis e suporte pós-aula na Arte Sobre as Cordas.' },
   { path: '/rota-musical', label: 'Rota Musical', title: 'Rota Musical | A música encontra a comunidade', description: 'Conheça a Rota Musical: apresentações em espaços da comunidade e um encontro de fim de ano para compartilhar a música dos alunos.' },
   { path: '/eventos', label: 'Eventos', title: 'Eventos e Apresentações | Arte Sobre as Cordas', description: 'Música, expressão e convivência. Conheça os projetos e apresentações dos alunos da Arte Sobre as Cordas.' },
   { path: '/galeria', label: 'Galeria', title: 'Galeria | Arte Sobre as Cordas', description: 'Um espaço para registros de aulas, apresentações e Rota Musical. Acompanhe a comunidade da Arte Sobre as Cordas.' },

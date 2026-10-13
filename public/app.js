@@ -64,7 +64,7 @@
   document.querySelectorAll('[data-support]').forEach(b => b.addEventListener('click', () => {
     const lesson = config.studentSupport.find(l => l.id === b.dataset.support);
     if (lesson.contactConfirmed && lesson.whatsapp) window.open(whatsappUrl(lesson.whatsapp, lesson.initialMessage), '_blank', 'noopener,noreferrer');
-    else openNotice(`Seu assunto: suporte pós-aula de ${lesson.instrument.toLowerCase()}.`);
+    else openNotice(`Seu assunto: aulas presenciais, online ou suporte pós-aula de ${lesson.instrument.toLowerCase()}.`);
   }));
   const searchDialog = document.querySelector('#search-dialog');
   const searchToggle = document.querySelector('.search-toggle');
