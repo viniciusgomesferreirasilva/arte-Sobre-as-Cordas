@@ -41,3 +41,5 @@ dialog{padding:0;border:1px solid var(--line);border-radius:10px;background:var(
 @media(max-width:760px){.objections,.enrollment-grid,.trust-section,.real-stories{grid-template-columns:1fr;gap:28px}.floating-contact{right:12px;bottom:12px;max-width:calc(100% - 24px);padding:12px 15px;font-size:.8125rem}.trust-note{padding:24px}.local-map iframe{height:250px}}
 
 .learning-formats{display:grid;grid-template-columns:1fr 1fr;gap:28px}.learning-formats article{padding:32px;border:1px solid var(--line);border-radius:12px;background:var(--sand)}.learning-formats p:not(.eyebrow){margin-top:20px;color:var(--muted)}.learning-formats .button{margin-top:24px}@media(max-width:760px){.learning-formats{grid-template-columns:1fr}.learning-formats article{padding:24px}}
+
+.floating-contact .whatsapp-icon{display:block;width:24px;height:24px;min-width:24px;flex:0 0 24px;overflow:visible}.floating-contact span{line-height:1.4}
