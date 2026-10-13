@@ -1,5 +1,26 @@
 (() => {
   const config = window.schoolConfig;
+  const safeInternalUrl = value => {
+    if(typeof value!=='string' || !/^\/(?!\/)/.test(value) || /[\u0000-\u0020\u007f\\]/.test(value)) return null;
+    const url=new URL(value,location.origin);
+    return url.origin===location.origin ? url.href : null;
+  };
+  const openOfficialUrl = value => {
+    try {
+      const url=new URL(value);
+      const allowed=['wa.me','www.youtube.com','youtube.com','youtu.be','www.instagram.com'];
+      if(url.protocol!=='https:' || url.username || url.password || !allowed.includes(url.hostname)) return false;
+      window.open(url.href,'_blank','noopener,noreferrer'); return true;
+    } catch {return false;}
+  };
+  document.querySelectorAll('.load-map').forEach(button=>button.addEventListener('click',()=>{
+    const wrapper=button.closest('.local-map');
+    const url=new URL(wrapper.dataset.mapUrl);
+    if(url.protocol!=='https:' || url.hostname!=='maps.google.com') return;
+    const frame=document.createElement('iframe');frame.title='Pesquisa no mapa: Office Center Vila Parque';frame.src=url.href;frame.width='600';frame.height='320';frame.referrerPolicy='no-referrer';
+    frame.setAttribute('sandbox','allow-scripts allow-same-origin allow-popups');
+    wrapper.querySelector('.map-consent').replaceWith(frame);
+  }));
   const discoveryPaths = {
     acompanhar: ['Violão ou ukulele', 'Explore acordes, ritmos e o prazer de acompanhar as músicas que você gosta.', '/cursos/#violao-popular'],
     melodia: ['Piano, violino ou violão clássico', 'Explore leitura, técnica e interpretação para dar forma às suas melodias.', '/cursos/'],
@@ -58,12 +79,13 @@
     const target = config.contacts[type];
     if (target) {
       const url = type === 'whatsapp' ? whatsappUrl(target, `Olá! Tenho interesse em ${b.dataset.course ?? 'uma aula experimental'} da Arte Sobre as Cordas.`) : target;
-      window.open(url, '_blank', 'noopener,noreferrer');
+      if(!openOfficialUrl(url)) openNotice('Consulte a escola pelo Instagram oficial.');
     } else openNotice(b.dataset.course ? `Seu interesse: ${b.dataset.course}.` : null);
   }));
   document.querySelectorAll('[data-support]').forEach(b => b.addEventListener('click', () => {
     const lesson = config.studentSupport.find(l => l.id === b.dataset.support);
-    if (lesson.contactConfirmed && lesson.whatsapp) window.open(whatsappUrl(lesson.whatsapp, lesson.initialMessage), '_blank', 'noopener,noreferrer');
+    if (!lesson) return;
+    if (lesson.contactConfirmed && lesson.whatsapp && /^\d{10,15}$/.test(lesson.whatsapp.replace(/\D/g,''))) openOfficialUrl(whatsappUrl(lesson.whatsapp, lesson.initialMessage));
     else openNotice(`Seu assunto: aulas presenciais, online ou suporte pós-aula de ${lesson.instrument.toLowerCase()}.`);
   }));
   const searchDialog = document.querySelector('#search-dialog');
@@ -73,14 +95,15 @@
   const searchStatus = document.querySelector('#search-status');
   const normalize = text => text.normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase();
   const renderSearch = () => {
-    const query = normalize(searchInput.value.trim());
+    const query = normalize(searchInput.value.trim().slice(0,120));
     const terms = query.split(/\s+/).filter(Boolean);
     const results = config.searchIndex.filter(item => terms.every(term => normalize(item.title+' '+item.description).includes(term)))
       .sort((a,b) => Number(normalize(b.title).includes(query))-Number(normalize(a.title).includes(query)));
     searchResults.replaceChildren();
     for (const item of results) {
       const li = document.createElement('li');
-      const link = document.createElement('a'); link.href = item.url;
+      const href=safeInternalUrl(item.url); if(!href) continue;
+      const link = document.createElement('a'); link.href = href;
       const title = document.createElement('strong'); title.textContent = item.title;
       const description = document.createElement('span'); description.textContent = item.description;
       link.append(title, description); li.append(link); searchResults.append(li);
