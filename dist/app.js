@@ -1,5 +1,30 @@
 (() => {
   const config = window.schoolConfig;
+  const ribbon=document.querySelector('.instrument-ribbon');
+  if(ribbon){
+    const control=ribbon.querySelector('.ribbon-toggle');
+    const preference=matchMedia('(prefers-reduced-motion: reduce)');
+    let paused=preference.matches;
+    const update=()=>{
+      ribbon.classList.toggle('ribbon-running',!paused);
+      control.setAttribute('aria-pressed',String(paused));
+      control.textContent=paused?'Ativar movimento':'Pausar movimento';
+    };
+    control.hidden=false;update();
+    control.addEventListener('click',()=>{paused=!paused;update();});
+    preference.addEventListener('change',()=>{paused=preference.matches;update();});
+  }
+  document.querySelectorAll('[data-course-filter]').forEach(button=>button.addEventListener('click',()=>{
+    const selected=button.dataset.courseFilter;
+    document.querySelectorAll('[data-course-filter]').forEach(b=>b.setAttribute('aria-pressed',String(b===button)));
+    let count=0;
+    document.querySelectorAll('.courses-page [data-course-family]').forEach(card=>{
+      const visible=selected==='all'||card.dataset.courseFamily===selected;
+      card.hidden=!visible;
+      if(visible){count+=card.classList.contains('course-feature')?2:1;card.classList.add('is-visible');}
+    });
+    document.querySelector('.course-filter-status').textContent=`${count} cursos para explorar.`;
+  }));
   const safeInternalUrl = value => {
     if(typeof value!=='string' || !/^\/(?!\/)/.test(value) || /[\u0000-\u0020\u007f\\]/.test(value)) return null;
     const url=new URL(value,location.origin);
@@ -175,7 +200,6 @@
   });
   const supportSection = document.querySelector('.support-selection');
   const scrollAccents = [
-    { anchor: document.querySelector('.discipline-strip'), target: document.querySelector('.discipline-strip .container'), direction: 1 },
     { anchor: document.querySelector('.stage-art'), target: document.querySelector('.stage-staff'), direction: -1 },
   ].filter(item => item.anchor && item.target);
   if (scrollAccents.length) {
