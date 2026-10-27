@@ -5,7 +5,7 @@ export const school = {
   contacts: {
     whatsapp: '5511982973432',
     instagram: 'https://www.instagram.com/artesobreascordas/',
-    youtube: 'https://www.youtube.com/@artesobreascordas?si=Tlp8tyvpcnjeQTJW',
+    youtube: 'https://www.youtube.com/@artesobreascordas',
   },
   legacy: { whatsapp: '11 9 8297-3432', status: 'pending_confirmation', source: 'PDF antigo' },
   domain: null,
@@ -20,8 +20,7 @@ export const courses = [
   { id: 'violino', name: 'Violino', family: 'Cordas', symbol: '♯', image: 'violino', description: 'Postura, afinação, técnica e sensibilidade musical, com atenção ao seu desenvolvimento.' },
   { id: 'ukulele', name: 'Ukulele', family: 'Cordas', symbol: '♪', image: 'ukulele', description: 'Um instrumento versátil e acolhedor para explorar acordes, ritmos e novos repertórios.' },
   { id: 'piano', name: 'Piano', family: 'Teclas', symbol: '♭', image: 'piano', description: 'Técnica, leitura e expressão artística, respeitando seu nível e sua evolução.' },
-  { id: 'canto', name: 'Canto', family: 'Voz', symbol: '♬', image: 'canto', description: 'Afinação, respiração, projeção vocal e interpretação para descobrir as possibilidades da sua voz.' },
-  { id: 'coral', name: 'Coral', family: 'Voz em conjunto', symbol: '♫', image: 'coral', description: 'Harmonia, escuta e expressão por meio do canto coletivo. Uma experiência musical compartilhada.' },
+  { id: 'canto', name: 'Canto e Coral', family: 'Voz', symbol: '♬', image: 'canto', description: 'Afinação, respiração, projeção vocal e interpretação, com oportunidades de canto individual e coletivo, harmonia e escuta em grupo.' },
 ].map(course => ({ ...course, format: null, sessionDuration: null, audience: null }));
 
 export const testimonials = []; // Nome, foto autorizada, instrumento e relato verificados.
@@ -83,4 +82,4 @@ export const paymentConfig = { provider: 'InfinitePay', verifiedCheckoutHosts: [
 export const coursePayments = courses.map(course => ({ courseId: course.id, offers: [] }));
 // Oferta: { id, title, amountCents, currency:'BRL', terms, checkoutUrl, status:'confirmed' }.
 
-export const professorContact = { name: "Ricardo ACISESP", whatsapp: "5511982973432" };
+export const professorContact = { name: "Setor administrativo", whatsapp: "5511982973432" };
