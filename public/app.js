@@ -10,7 +10,8 @@
       control.setAttribute('aria-pressed',String(paused));
       control.textContent=paused?'Ativar movimento':'Pausar movimento';
     };
-    control.hidden=false;update();
+    control.hidden=false;
+    (document.fonts?.ready ?? Promise.resolve()).then(update);
     control.addEventListener('click',()=>{paused=!paused;update();});
     preference.addEventListener('change',()=>{paused=preference.matches;update();});
   }
