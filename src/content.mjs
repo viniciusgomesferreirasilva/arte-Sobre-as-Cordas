@@ -41,7 +41,7 @@ export const studentSupport = [
   { id: 'canto', instrument: 'Canto', description: 'Converse sobre os exercícios e as orientações trabalhados em aula para acompanhar sua prática vocal.' },
 ].map(item => ({
   ...item, teacher: null, whatsapp: null, contactConfirmed: false,
-  initialMessage: `Olá! Gostaria de saber sobre aulas presenciais, online ou suporte pós-aula de ${item.instrument.toLowerCase()} na Arte Sobre as Cordas.`,
+  initialMessage: `Olá! Vi o site da Arte Sobre as Cordas e gostaria de saber mais sobre as aulas de ${item.instrument.toLowerCase()} (presenciais, online ou suporte pós-aula). Pode me ajudar?`,
 }));
 
 export const gallery = [
