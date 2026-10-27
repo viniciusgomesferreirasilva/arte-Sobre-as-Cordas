@@ -3,9 +3,9 @@ export const school = {
   description: 'Uma escola de música que inspira pessoas de todas as idades a descobrirem seu talento e desenvolverem suas habilidades musicais com alegria, técnica e sensibilidade.',
   address: ['Office Center Vila Parque', 'Estrada Tenente Marques, 4321 – Vila Poupança', 'Sobreloja 3 – 1° subsolo'],
   contacts: {
-    whatsapp: null,
+    whatsapp: '5511982973432',
     instagram: 'https://www.instagram.com/artesobreascordas/',
-    youtube: 'https://youtube.com/@artesobreascordas?si=Tlp8tyvpcnjeQTJW',
+    youtube: 'https://www.youtube.com/@artesobreascordas?si=Tlp8tyvpcnjeQTJW',
   },
   legacy: { whatsapp: '11 9 8297-3432', status: 'pending_confirmation', source: 'PDF antigo' },
   domain: null,
