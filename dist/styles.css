@@ -53,3 +53,5 @@ dialog{padding:0;border:1px solid var(--line);border-radius:10px;background:var(
 @media(max-width:1060px){.quick-paths>a{padding-inline:16px;gap:10px}.youtube-layout{gap:32px}}
 @media(max-width:760px){.quick-paths{grid-template-columns:1fr;padding-block:12px}.quick-paths>a,.quick-paths>a:first-child{padding:20px 0}.quick-paths>a+a{border-left:0;border-top:1px solid var(--line)}.youtube-layout{grid-template-columns:1fr;gap:28px}.youtube-intro{position:static}.youtube-mission{padding:24px}.ribbon-toggle{right:12px}.ribbon-group>span{gap:24px;padding-right:24px}}
 @media(prefers-reduced-motion:reduce){.ribbon-track{animation:none!important;transform:none!important}.ribbon-toggle{display:none}.instrument-ribbon{padding-bottom:22px}.ribbon-track{width:100%}.ribbon-group{width:100%;flex-wrap:wrap;justify-content:center;gap:12px}.ribbon-group[aria-hidden=true]{display:none}.ribbon-group>span{padding:0;gap:12px;font-size:1rem}}
+
+.youtube-brand-icon{display:block;width:72px;height:51px;margin-bottom:24px;flex-shrink:0}@media(max-width:760px){.youtube-brand-icon{width:60px;height:auto;margin-bottom:20px}}
