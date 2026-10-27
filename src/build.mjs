@@ -17,8 +17,4 @@ for (const p of pages) {
 }
 console.log(`Build concluído: ${pages.length} páginas estáticas com URLs próprias.`);
 
-// Manter links antigos acessíveis sem anunciar a modalidade substituída.
-await mkdir('dist/aulas-online', { recursive: true });
-await writeFile('dist/aulas-online/index.html', `<!DOCTYPE html><html lang="pt-BR"><head><meta charset="UTF-8"><meta http-equiv="Content-Security-Policy" content="${esc(contentSecurityPolicy)}"><meta name="referrer" content="no-referrer"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="robots" content="noindex"><meta http-equiv="refresh" content="0; url=/suporte-ao-aluno/"><title>Suporte ao Aluno | Arte Sobre as Cordas</title><link rel="stylesheet" href="/styles.css"></head><body><main class="container section"><h1>Suporte ao Aluno</h1><p><a class="text-link" href="/suporte-ao-aluno/">Acesse o suporte pós-aula</a></p></main></body></html>`);
-
 await writeFile('dist/_headers', `/*\n${Object.entries(securityHeaders).map(([key,value])=>`  ${key}: ${value}`).join('\n')}\n`);
