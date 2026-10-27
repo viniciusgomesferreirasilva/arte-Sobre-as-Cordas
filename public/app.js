@@ -96,7 +96,7 @@
     const type = b.dataset.contact;
     const target = config.contacts[type];
     if (target) {
-      const url = type === 'whatsapp' ? whatsappUrl(target, (b.dataset.course === 'gostaria de mais informações sobre as formas de pagamento' ? 'gostaria de mais informações sobre as formas de pagamento' : `Olá! Tenho interesse em ${b.dataset.course ?? 'uma aula experimental'} da Arte Sobre as Cordas.`)) : target;
+      const url = type === 'whatsapp' ? whatsappUrl(target, (b.dataset.course === 'gostaria de mais informações sobre as formas de pagamento' ? 'Olá! Tudo bem? Tenho interesse no curso de **Violão Popular** da Arte Sobre as Cordas e gostaria de receber mais informações sobre as formas de pagamento, valores e condições disponíveis. Agradeço desde já!' : `Olá! Tenho interesse em ${b.dataset.course ?? 'uma aula experimental'} da Arte Sobre as Cordas.`)) : target;
       if(!openOfficialUrl(url)) openNotice('Consulte a escola pelo Instagram oficial.');
     } else openNotice(b.dataset.course ? `Seu interesse: ${b.dataset.course}.` : null);
   }));
