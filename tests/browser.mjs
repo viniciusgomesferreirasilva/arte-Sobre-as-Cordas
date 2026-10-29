@@ -30,7 +30,7 @@ for(const route of ['/cursos/','/pagamentos/']){
   const button=page.locator(`[data-course="${route==='/pagamentos/'?'Pagamento de ':''}${course.name}"]`).first();
   await button.click();
   const url=new URL(await page.evaluate(()=>window.lastOpenedUrl));assert.equal(url.hostname,'wa.me');assert.equal(url.pathname,'/5511982973432');
-  assert.equal(url.searchParams.get('text'),`Olá! Tudo bem? Tenho interesse no curso de ${course.name} da Arte Sobre as Cordas e gostaria de receber mais informações sobre as formas de pagamento, valores e condições disponíveis. Agradeço desde já!`);
+  assert.equal(url.searchParams.get('text'),`Olá! Tudo bem? Quero fazer o curso de ${course.name} na Arte Sobre as Cordas. Gostaria de saber mais sobre valores, formas de pagamento e horários disponíveis. Obrigado!`);
  }
 }
 await page.goto('http://127.0.0.1:4173/cursos/');await page.getByRole('button',{name:'Teclas',exact:true}).click();assert(await page.locator('[data-course-family="teclas"]').isVisible());assert(!(await page.locator('[data-course-family="cordas"]').first().isVisible()));
