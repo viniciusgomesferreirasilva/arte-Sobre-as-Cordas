@@ -1,6 +1,6 @@
 # Arte Sobre as Cordas
 
-Site institucional de avaliação, em português brasileiro, com oito páginas estáticas, conteúdo renderizado no HTML e pequenas interações em JavaScript. Node.js 20 ou superior; nenhuma dependência de aplicação para instalar.
+Site institucional de avaliação, em português brasileiro, com dez páginas estáticas, conteúdo renderizado no HTML e pequenas interações em JavaScript. Node.js 20 ou superior; nenhuma dependência de aplicação para instalar.
 
 ## Executar
 
@@ -10,7 +10,7 @@ npm run check
 npm run dev
 ```
 
-Abra `http://localhost:4173`. O servidor serve cada URL diretamente, inclusive após atualizar a página. Para publicar, use a pasta `dist` como raiz pública; o host precisa servir `index.html` dentro de cada diretório. As rotas são `/`, `/a-escola`, `/cursos`, `/suporte-ao-aluno`, `/rota-musical`, `/eventos`, `/galeria` e `/contato`.
+Abra `http://localhost:4173`. O servidor serve cada URL diretamente, inclusive após atualizar a página. Para publicar, use a pasta `dist` como raiz pública; o host precisa servir `index.html` dentro de cada diretório. As rotas são `/`, `/a-escola`, `/cursos`, `/suporte-ao-aluno`, `/rota-musical`, `/eventos`, `/galeria`, `/aulas-online`, `/pagamentos` e `/contato`.
 
 Os links internos usam a barra final dos diretórios gerados. A navegação é nativa do navegador, sem espera imposta por JavaScript.
 
@@ -29,7 +29,7 @@ Após qualquer alteração, rode `npm run build`. O build gera também `dist/sit
 
 ### Contatos
 
-Cadastre o WhatsApp oficial em `school.contacts.whatsapp` somente após confirmação, com código de país. O canal oficial vai em `school.contacts.youtube`. Enquanto estão `null`, a interação abre o aviso de contato pendente. O Instagram foi confirmado pelo link enviado na mensagem do usuário.
+O WhatsApp administrativo confirmado é +55 11 98297-3432. Os contatos oficiais estão em `school.contacts`: WhatsApp, YouTube e Instagram. Os botões de cursos e pagamentos personalizam a mensagem pelo nome do curso selecionado.
 
 Cada item de `studentSupport` tem instrumento, descrição, professor, WhatsApp, mensagem inicial e `contactConfirmed`. O WhatsApp do professor só é aberto quando o número está preenchido e o contato foi confirmado. Não há vínculo automático com o contato da escola.
 
@@ -49,4 +49,8 @@ Consulte [pendências](docs/pendencias.md), [materiais](docs/materiais.md), [ref
 
 O menu de três pontos e o movimento lateral da página inicial estão descritos em [ajustes de menu e movimento](docs/ajustes-menu-movimento.md).
 
-A rota antiga `/aulas-online/` encaminha para `/suporte-ao-aluno/`. A paleta atual combina superfícies marrons, vinho e texto claro.
+A rota `/aulas-online/` apresenta as aulas online e o contato administrativo. A paleta atual combina superfícies marrons, vinho e texto claro.
+
+## Verificação no navegador
+
+Com `npm run dev` em execução e Playwright/Chromium disponíveis no ambiente, execute `node tests/browser.mjs`. Para instalações externas, configure `PLAYWRIGHT_MODULE` com o caminho do módulo Playwright e `CHROMIUM_PATH` com o executável. O teste valida as dez rotas em celular e desktop, menu, pesquisa, filtros e as mensagens dos seis cursos e pagamentos sem enviar mensagens. Execute também `node src/security-check.mjs` após o build.

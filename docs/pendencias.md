@@ -2,8 +2,8 @@
 
 ## Contatos e equipe
 
-- WhatsApp oficial da escola. Referência do PDF: **11 9 8297-3432**, mantida apenas em `school.legacy`, sem link público ou ativação.
-- Canal oficial do YouTube.
+- WhatsApp administrativo confirmado: **+55 11 98297-3432**, ativo no site.
+- YouTube oficial confirmado: https://www.youtube.com/@artesobreascordas.
 - Nomes, apresentações e contatos próprios dos professores.
 - Canais, professores responsáveis, disponibilidade e formato do suporte pós-aula.
 - O perfil `https://www.instagram.com/artesobreascordas/` foi fornecido expressamente pelo usuário e está ativo como perfil geral.
