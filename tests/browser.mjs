@@ -28,18 +28,14 @@ for(const route of ['/cursos/','/pagamentos/']){
  await page.goto('http://127.0.0.1:4173'+route);
  for(const course of courses){
   if(route==='/pagamentos/')await page.getByRole('tab',{name:course.name,exact:true}).click();
-  let destination;
-  if(route==='/pagamentos/'){
-   const link=page.getByRole('link',{name:'Consultar pagamento de '+course.name,exact:true});
-   destination=await link.getAttribute('href');
-   await link.click();
-   await page.waitForURL(destination);
-   assert.equal(page.url(),destination);
-   await page.goBack();
-  } else {
-   await page.locator(`[data-course="${course.name}"]`).first().click();
-   destination=await page.evaluate(()=>window.lastOpenedUrl);
-  }
+  const link=route==='/pagamentos/'
+    ? page.getByRole('link',{name:'Consultar pagamento de '+course.name,exact:true})
+    : page.locator(`a[data-course="${course.name}"]`).first();
+  const destination=await link.getAttribute('href');
+  await link.click();
+  await page.waitForURL(destination);
+  assert.equal(page.url(),destination);
+  await page.goBack();
   const url=new URL(destination);assert.equal(url.hostname,'wa.me');assert.equal(url.pathname,'/5511982973432');
   assert.equal(url.searchParams.get('text'),`Olá! Tudo bem? Quero fazer o curso de ${course.name} na Arte Sobre as Cordas. Gostaria de saber mais sobre valores, formas de pagamento e horários disponíveis. Obrigado!`);
  }
@@ -50,6 +46,13 @@ const noJs=await browser.newContext({javaScriptEnabled:false});
 await noJs.route('https://wa.me/**', route=>route.fulfill({status:200,contentType:'text/html',body:'WhatsApp interceptado'}));
 const noJsPage=await noJs.newPage();await noJsPage.goto('http://127.0.0.1:4173/pagamentos/');
 await noJsPage.getByRole('link',{name:'Consultar pagamento de Violão Popular',exact:true}).click();
-assert.equal(new URL(noJsPage.url()).hostname,'wa.me');await noJs.close();
+assert.equal(new URL(noJsPage.url()).hostname,'wa.me');
+for(const [route,selector] of [['/','.floating-contact'],['/','.header-cta'],['/aulas-online/','a.button[href^="https://wa.me/"]'],['/cursos/','a[data-course="Ukulele"]']]) {
+ await noJsPage.goto('http://127.0.0.1:4173'+route);
+ const link=noJsPage.locator(selector).first();
+ const destination=await link.getAttribute('href');await link.click();await noJsPage.waitForURL(destination);
+ const url=new URL(noJsPage.url());assert.equal(url.pathname,'/5511982973432');assert(url.searchParams.get('text'));
+}
+await noJs.close();
 assert.deepEqual(errors,[]);console.log('PASS: 10 rotas em celular/desktop, sem overflow ou erros JS; menu, pesquisa sem acentos, filtros, Instagram acessível e 12 mensagens WhatsApp exatas.');
 } finally {await browser.close();}
