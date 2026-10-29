@@ -6,6 +6,7 @@ const browser=await chromium.launch({executablePath:process.env.CHROMIUM_PATH ||
 try {
 const page=await browser.newPage(); const errors=[];
 page.on('pageerror',e=>errors.push(e.message));
+await page.context().route('https://wa.me/**', route=>route.fulfill({status:200,contentType:'text/html',body:'<p>Destino WhatsApp interceptado pelo teste.</p>'}));
 await page.addInitScript(()=>{window.open=(url)=>{window.lastOpenedUrl=url;return null;};});
 for(const viewport of [{width:390,height:844},{width:1440,height:900}]){
  await page.setViewportSize(viewport);
@@ -27,13 +28,28 @@ for(const route of ['/cursos/','/pagamentos/']){
  await page.goto('http://127.0.0.1:4173'+route);
  for(const course of courses){
   if(route==='/pagamentos/')await page.getByRole('tab',{name:course.name,exact:true}).click();
-  const button=page.locator(`[data-course="${route==='/pagamentos/'?'Pagamento de ':''}${course.name}"]`).first();
-  await button.click();
-  const url=new URL(await page.evaluate(()=>window.lastOpenedUrl));assert.equal(url.hostname,'wa.me');assert.equal(url.pathname,'/5511982973432');
+  let destination;
+  if(route==='/pagamentos/'){
+   const link=page.getByRole('link',{name:'Consultar pagamento de '+course.name,exact:true});
+   destination=await link.getAttribute('href');
+   await link.click();
+   await page.waitForURL(destination);
+   assert.equal(page.url(),destination);
+   await page.goBack();
+  } else {
+   await page.locator(`[data-course="${course.name}"]`).first().click();
+   destination=await page.evaluate(()=>window.lastOpenedUrl);
+  }
+  const url=new URL(destination);assert.equal(url.hostname,'wa.me');assert.equal(url.pathname,'/5511982973432');
   assert.equal(url.searchParams.get('text'),`Olá! Tudo bem? Quero fazer o curso de ${course.name} na Arte Sobre as Cordas. Gostaria de saber mais sobre valores, formas de pagamento e horários disponíveis. Obrigado!`);
  }
 }
 await page.goto('http://127.0.0.1:4173/cursos/');await page.getByRole('button',{name:'Teclas',exact:true}).click();assert(await page.locator('[data-course-family="teclas"]').isVisible());assert(!(await page.locator('[data-course-family="cordas"]').first().isVisible()));
 await page.goto('http://127.0.0.1:4173/galeria/');await page.getByRole('button',{name:'Apresentações',exact:true}).click();assert.equal(await page.locator('.gallery-page .gallery-item:visible').count(),3);
+const noJs=await browser.newContext({javaScriptEnabled:false});
+await noJs.route('https://wa.me/**', route=>route.fulfill({status:200,contentType:'text/html',body:'WhatsApp interceptado'}));
+const noJsPage=await noJs.newPage();await noJsPage.goto('http://127.0.0.1:4173/pagamentos/');
+await noJsPage.getByRole('link',{name:'Consultar pagamento de Violão Popular',exact:true}).click();
+assert.equal(new URL(noJsPage.url()).hostname,'wa.me');await noJs.close();
 assert.deepEqual(errors,[]);console.log('PASS: 10 rotas em celular/desktop, sem overflow ou erros JS; menu, pesquisa sem acentos, filtros, Instagram acessível e 12 mensagens WhatsApp exatas.');
 } finally {await browser.close();}
